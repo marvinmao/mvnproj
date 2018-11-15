@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  * @since 2018/11/10
  */
-//com.llnqdx.mvnproj.mapper;
 @SpringBootApplication(scanBasePackages = "com.llnqdx.mvnproj")
 @MapperScan("com.llnqdx.mvnproj.mapper")
 @RestController

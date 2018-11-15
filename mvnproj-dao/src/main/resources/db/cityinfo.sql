@@ -1,13 +1,25 @@
 ##省级 provincial
 ##城市 city
+
+CREATE DATABASE `mytest` CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+use mytest;
 drop table if exists city;
 drop table if exists provincial;
+
 CREATE TABLE provincial
 (
     pid int PRIMARY KEY NOT NULL,
     provincial varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE provincial COMMENT = '省级信息表';
+
+CREATE TABLE city (
+cid INT NOT NULL,
+city VARCHAR ( 64 ) PRIMARY KEY,
+pid INT,
+FOREIGN KEY ( pid ) REFERENCES provincial ( pid )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE city COMMENT = '城市信息表';
 
 insert into provincial values(1,'北京市');
 insert into provincial values(2,'天津市');
@@ -45,14 +57,6 @@ insert into provincial values(33,'澳门特别行政区');
 insert into provincial values(34,'香港特别行政区');
 ##select pid,provincial from provincial
 
-CREATE TABLE city (
-cid INT NOT NULL,
-city VARCHAR ( 64 ) PRIMARY KEY,
-pid INT,
-FOREIGN KEY ( pid ) REFERENCES provincial ( pid )
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-ALTER TABLE city COMMENT = '城市信息表';
-##create table city(cid int not null,city varchar(50) primary key,pid int foreign key references provincial(pid));
 ########################################################################################################################################
 ###############################################################
 ##插入各个省的城市数据
