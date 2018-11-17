@@ -1,5 +1,6 @@
 package com.llnqdx.mvnproj;
 
+import com.llnqdx.mvnproj.utils.StringUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,6 @@ public class MvnprojApplication {
 
     @RequestMapping("/")
     public String hello() {
-        return "hello spring boot";
+        return StringUtils.print("hello spring boot");
     }
 }
