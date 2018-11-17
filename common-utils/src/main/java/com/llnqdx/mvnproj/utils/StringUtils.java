@@ -7,7 +7,8 @@ package com.llnqdx.mvnproj.utils;
  */
 public class StringUtils {
 
-    public static void print(String msg) {
+    public static String print(String msg) {
         System.out.println(msg);
+        return msg;
     }
 }
