@@ -1,9 +1,11 @@
 package com.llnqdx.mvnproj;
 
 import com.llnqdx.mvnproj.utils.StringUtils;
+import com.llnqdx.mvnproj.common.ds.DynamicDataSourceRegister;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication(scanBasePackages = "com.llnqdx.mvnproj")
 @MapperScan("com.llnqdx.mvnproj.mapper")
+//启动注册动态数据源been
+@Import({ DynamicDataSourceRegister.class })
 @RestController
 public class MvnprojApplication {
 
