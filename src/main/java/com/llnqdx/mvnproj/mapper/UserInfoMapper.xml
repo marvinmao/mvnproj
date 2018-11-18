@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     id, name, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,7 +91,7 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria">
+  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria">
     delete from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultType="java.lang.Long">
     select count(*) from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     id, name, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,7 +268,7 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria">
+  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria">
     delete from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultType="java.lang.Long">
     select count(*) from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -421,7 +421,7 @@
   <sql id="Base_Column_List">
     id, name, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -445,7 +445,7 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria">
+  <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria">
     delete from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -482,7 +482,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.llnqdx.mvnproj.model.UserInfoCriteria" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.llnqdx.mvnproj.criterias.UserInfoCriteria" resultType="java.lang.Long">
     select count(*) from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
