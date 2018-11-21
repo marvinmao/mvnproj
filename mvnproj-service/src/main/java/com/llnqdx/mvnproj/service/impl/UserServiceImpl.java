@@ -43,4 +43,19 @@ public class UserServiceImpl implements UserService {
         logger.info("findAllUser users[{}]", JSON.toJSONString(users));
         return users;
     }
+
+    @Override
+    public String getUser(Integer id) {
+        System.out.println("进入到getUser服务实现内 id：" + id);
+        if (id == 1) {
+            return "Hello,LLL丶禾羊,id:" + id;
+        }
+        if (id == 2) {
+            return "Hello,OSC,id:" + id;
+        }
+        if (id == 3) {
+            return "Hello,开源中国！,id:" + id;
+        }
+        return null;
+    }
 }
