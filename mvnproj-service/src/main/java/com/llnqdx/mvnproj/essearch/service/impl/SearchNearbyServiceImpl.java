@@ -5,7 +5,7 @@ import com.llnqdx.mvnproj.essearch.service.SearchNearbyService;
 import com.llnqdx.mvnproj.utils.RandomUtils;
 
 /**
- * @Auther: maofujiang
+ * @Auther: marvinmao
  * @Date: 2018/12/3
  * @Description:
  */

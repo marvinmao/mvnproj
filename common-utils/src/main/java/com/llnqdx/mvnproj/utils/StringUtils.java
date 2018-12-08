@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * @author maofujiang
+ * @author marvinmao
  * @Description:
  * @since 2018/11/10
  */

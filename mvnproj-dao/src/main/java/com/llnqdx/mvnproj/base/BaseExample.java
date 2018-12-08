@@ -2,7 +2,7 @@ package com.llnqdx.mvnproj.base;
 
 /**
  * Created by IntelliJ IDEA.
- * User: maofujiang
+ * User: marvinmao
  * Date: 2018/9/28
  */
 public class BaseExample {

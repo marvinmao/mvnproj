@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by IntelliJ IDEA.
- * User: maofujiang
+ * User: marvinmao
  * Date: 2018/9/28
  */
 public class BaseEntity implements Serializable {
