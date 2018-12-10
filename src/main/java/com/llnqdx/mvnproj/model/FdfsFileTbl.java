@@ -1,17 +1,14 @@
 package com.llnqdx.mvnproj.model;
 
-import com.llnqdx.mvnproj.base.BaseEntity;
-
 import java.io.Serializable;
 import java.util.Date;
 
-public class FdfsFileTbl extends BaseEntity implements Serializable {
+public class FdfsFileTbl implements Serializable {
     private Integer id;
 
     private String fileName;
 
     private String fileUrl;
-    private String filePath;
 
     private Integer fileLength;
 
@@ -87,24 +84,5 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
 
     public void setDeleteFlag(Short deleteFlag) {
         this.deleteFlag = deleteFlag;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public FdfsFileTbl(String fileName, String fileUrl, Integer fileLength, Integer usedTime, Date createTime, Date updateTime) {
-        this.fileName = fileName;
-        this.fileUrl = fileUrl;
-        this.fileLength = fileLength;
-        this.usedTime = usedTime;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
-    public FdfsFileTbl() {
     }
 }

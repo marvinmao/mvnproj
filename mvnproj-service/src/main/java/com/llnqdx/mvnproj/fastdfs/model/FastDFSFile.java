@@ -19,10 +19,10 @@ public class FastDFSFile {
 
     private String path;
 
-    public FastDFSFile() {}
+    public FastDFSFile() {
+    }
 
-    public FastDFSFile(String name, byte[] content, String ext, String height,
-                       String width, String author) {
+    public FastDFSFile(String name, byte[] content, String ext, String height, String width, String author) {
         super();
         this.name = name;
         this.content = content;

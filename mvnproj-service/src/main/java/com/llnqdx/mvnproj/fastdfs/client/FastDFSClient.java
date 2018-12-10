@@ -34,12 +34,9 @@ public class FastDFSClient {
     }
 
     public static String[] upload(FastDFSFile file) {
-        logger.info("File Name [{}]  File Length [{}]", file.getName(), file.getContent().length);
-
         NameValuePair[] meta_list = new NameValuePair[1];
         meta_list[0] = new NameValuePair("author", file.getAuthor());
 
-        long startTime = System.currentTimeMillis();
         String[] uploadResults = null;
         StorageClient storageClient = null;
         try {
@@ -50,7 +47,6 @@ public class FastDFSClient {
         } catch (Exception e) {
             logger.error("Non IO Exception when uploadind the file:" + file.getName(), e);
         }
-        logger.info("upload_file time used [{}] ms", System.currentTimeMillis() - startTime);
 
         if (uploadResults == null && storageClient != null) {
             logger.error("upload file fail, error code:" + storageClient.getErrorCode());
@@ -105,9 +101,18 @@ public class FastDFSClient {
             inputStream.read(file_buff);
         }
         inputStream.close();
+        FdfsFileTbl fdfsFileTbl = new FdfsFileTbl(fileName, null, 0, 0, new Date(), new Date());
         FastDFSFile file = new FastDFSFile(fileName, file_buff, ext);
+        fdfsFileTbl.setFileName(fileName);
+        int fileLength = file.getContent().length;
+        fdfsFileTbl.setFileLength(fileLength);
+        logger.info("File Name [{}]  File Length [{}]", fileName, file.getContent().length);
         try {
+            long startTime = System.currentTimeMillis();
             fileAbsolutePath = FastDFSClient.upload(file);  //upload to fastdfs
+            Long usedTime = System.currentTimeMillis() - startTime;
+            fdfsFileTbl.setUsedTime(usedTime.intValue());
+            logger.info("upload_file usedTime [{}] ms", usedTime);
         } catch (Exception e) {
             logger.error("upload file Exception!", e);
         }
@@ -115,7 +120,7 @@ public class FastDFSClient {
             logger.error("upload file failed,please upload again!");
         }
         String path = fileAbsolutePath[0] + "/" + fileAbsolutePath[1];
-        FdfsFileTbl fdfsFileTbl = new FdfsFileTbl(fileName, path, 0, 0, new Date(), new Date());
+        fdfsFileTbl.setFileUrl(path);
         logger.info("upload file fdfsFileTbl [{}]", JSON.toJSONString(fdfsFileTbl));
         return fdfsFileTbl;
     }

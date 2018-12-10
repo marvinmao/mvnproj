@@ -1,9 +1,12 @@
 package com.llnqdx.mvnproj.fastdfs.service.impl;
 
+import com.llnqdx.mvnproj.enums.DeleteFlagEnum;
 import com.llnqdx.mvnproj.fastdfs.client.FastDFSClient;
+import com.llnqdx.mvnproj.fastdfs.constant.Constant;
 import com.llnqdx.mvnproj.fastdfs.service.FastDFSService;
 import com.llnqdx.mvnproj.mapper.FdfsFileTblMapper;
 import com.llnqdx.mvnproj.model.FdfsFileTbl;
+import com.llnqdx.mvnproj.model.FdfsFileTblCriteria;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,18 +59,25 @@ public class FastDFSServiceImpl implements FastDFSService {
         try {
             String deleteMsg = "";
             int deleteFile = FastDFSClient.deleteFile(groupName, remoteFileName);
-            if (deleteFile==0) {
-//                fdfsFileTblMapper.
+            if (deleteFile == 0) {
+                logger.info("-----------文件删除成功，开始更新数据库-----------");
+                FdfsFileTblCriteria criteria = new FdfsFileTblCriteria();
+                FdfsFileTblCriteria.Criteria updateCriteria = criteria.createCriteria();
+                updateCriteria.andFileUrlEqualTo(filePath);
+                FdfsFileTbl fdfsFileTbl = new FdfsFileTbl();
+                fdfsFileTbl.setDeleteFlag(DeleteFlagEnum.TRUE.getKey().shortValue());
+                int updateByExampleSelective = fdfsFileTblMapper.updateByExampleSelective(fdfsFileTbl, criteria);
+                logger.info("updateByExampleSelective [{}]", updateByExampleSelective);
             }
             //-1失败,0成功 ,2找不到文件
             switch (deleteFile) {
-                case -1:
+                case Constant.DELETE_FAILD:
                     deleteMsg = "删除失败";
                     break;
-                case 0:
+                case Constant.DELETE_SUCCESS:
                     deleteMsg = "删除成功";
                     break;
-                case 2:
+                case Constant.DELETE_NOT_EXIST:
                     deleteMsg = "找不到文件";
                     break;
                 default:

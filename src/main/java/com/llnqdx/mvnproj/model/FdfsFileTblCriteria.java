@@ -1,12 +1,10 @@
 package com.llnqdx.mvnproj.model;
 
-import com.llnqdx.mvnproj.base.BaseExample;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FdfsFileTblCriteria extends BaseExample {
+public class FdfsFileTblCriteria {
     protected String orderByClause;
 
     protected boolean distinct;
