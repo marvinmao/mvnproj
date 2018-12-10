@@ -1,7 +1,7 @@
 package com.llnqdx.mvnproj.fastdfs.constant;
 
 /**
- * @Auther: maofujiang
+ * @Auther: marvinmao
  * @Date: 2018/12/8
  * @Description:
  */
