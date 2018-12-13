@@ -1,12 +1,10 @@
 package com.llnqdx.mvnproj.model;
 
-import com.llnqdx.mvnproj.base.BaseExample;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FdfsFileTblCriteria extends BaseExample {
+public class FdfsFileTblCriteria {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -317,6 +315,76 @@ public class FdfsFileTblCriteria extends BaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andFileMd5IsNull() {
+            addCriterion("file_md5 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5IsNotNull() {
+            addCriterion("file_md5 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5EqualTo(String value) {
+            addCriterion("file_md5 =", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5NotEqualTo(String value) {
+            addCriterion("file_md5 <>", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5GreaterThan(String value) {
+            addCriterion("file_md5 >", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5GreaterThanOrEqualTo(String value) {
+            addCriterion("file_md5 >=", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5LessThan(String value) {
+            addCriterion("file_md5 <", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5LessThanOrEqualTo(String value) {
+            addCriterion("file_md5 <=", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5Like(String value) {
+            addCriterion("file_md5 like", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5NotLike(String value) {
+            addCriterion("file_md5 not like", value, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5In(List<String> values) {
+            addCriterion("file_md5 in", values, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5NotIn(List<String> values) {
+            addCriterion("file_md5 not in", values, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5Between(String value1, String value2) {
+            addCriterion("file_md5 between", value1, value2, "fileMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileMd5NotBetween(String value1, String value2) {
+            addCriterion("file_md5 not between", value1, value2, "fileMd5");
+            return (Criteria) this;
+        }
+
         public Criteria andFileLengthIsNull() {
             addCriterion("file_length is null");
             return (Criteria) this;
@@ -377,6 +445,66 @@ public class FdfsFileTblCriteria extends BaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andFileSizeIsNull() {
+            addCriterion("file_size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeIsNotNull() {
+            addCriterion("file_size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeEqualTo(Integer value) {
+            addCriterion("file_size =", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotEqualTo(Integer value) {
+            addCriterion("file_size <>", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeGreaterThan(Integer value) {
+            addCriterion("file_size >", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("file_size >=", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeLessThan(Integer value) {
+            addCriterion("file_size <", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeLessThanOrEqualTo(Integer value) {
+            addCriterion("file_size <=", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeIn(List<Integer> values) {
+            addCriterion("file_size in", values, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotIn(List<Integer> values) {
+            addCriterion("file_size not in", values, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeBetween(Integer value1, Integer value2) {
+            addCriterion("file_size between", value1, value2, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotBetween(Integer value1, Integer value2) {
+            addCriterion("file_size not between", value1, value2, "fileSize");
+            return (Criteria) this;
+        }
+
         public Criteria andUsedTimeIsNull() {
             addCriterion("used_time is null");
             return (Criteria) this;
@@ -434,6 +562,186 @@ public class FdfsFileTblCriteria extends BaseExample {
 
         public Criteria andUsedTimeNotBetween(Integer value1, Integer value2) {
             addCriterion("used_time not between", value1, value2, "usedTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedIsNull() {
+            addCriterion("avg_upload_spleed is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedIsNotNull() {
+            addCriterion("avg_upload_spleed is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedEqualTo(Double value) {
+            addCriterion("avg_upload_spleed =", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedNotEqualTo(Double value) {
+            addCriterion("avg_upload_spleed <>", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedGreaterThan(Double value) {
+            addCriterion("avg_upload_spleed >", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedGreaterThanOrEqualTo(Double value) {
+            addCriterion("avg_upload_spleed >=", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedLessThan(Double value) {
+            addCriterion("avg_upload_spleed <", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedLessThanOrEqualTo(Double value) {
+            addCriterion("avg_upload_spleed <=", value, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedIn(List<Double> values) {
+            addCriterion("avg_upload_spleed in", values, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedNotIn(List<Double> values) {
+            addCriterion("avg_upload_spleed not in", values, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedBetween(Double value1, Double value2) {
+            addCriterion("avg_upload_spleed between", value1, value2, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvgUploadSpleedNotBetween(Double value1, Double value2) {
+            addCriterion("avg_upload_spleed not between", value1, value2, "avgUploadSpleed");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthIsNull() {
+            addCriterion("img_width is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthIsNotNull() {
+            addCriterion("img_width is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthEqualTo(Integer value) {
+            addCriterion("img_width =", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthNotEqualTo(Integer value) {
+            addCriterion("img_width <>", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthGreaterThan(Integer value) {
+            addCriterion("img_width >", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("img_width >=", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthLessThan(Integer value) {
+            addCriterion("img_width <", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthLessThanOrEqualTo(Integer value) {
+            addCriterion("img_width <=", value, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthIn(List<Integer> values) {
+            addCriterion("img_width in", values, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthNotIn(List<Integer> values) {
+            addCriterion("img_width not in", values, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthBetween(Integer value1, Integer value2) {
+            addCriterion("img_width between", value1, value2, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgWidthNotBetween(Integer value1, Integer value2) {
+            addCriterion("img_width not between", value1, value2, "imgWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightIsNull() {
+            addCriterion("img_height is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightIsNotNull() {
+            addCriterion("img_height is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightEqualTo(Integer value) {
+            addCriterion("img_height =", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightNotEqualTo(Integer value) {
+            addCriterion("img_height <>", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightGreaterThan(Integer value) {
+            addCriterion("img_height >", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightGreaterThanOrEqualTo(Integer value) {
+            addCriterion("img_height >=", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightLessThan(Integer value) {
+            addCriterion("img_height <", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightLessThanOrEqualTo(Integer value) {
+            addCriterion("img_height <=", value, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightIn(List<Integer> values) {
+            addCriterion("img_height in", values, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightNotIn(List<Integer> values) {
+            addCriterion("img_height not in", values, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightBetween(Integer value1, Integer value2) {
+            addCriterion("img_height between", value1, value2, "imgHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgHeightNotBetween(Integer value1, Integer value2) {
+            addCriterion("img_height not between", value1, value2, "imgHeight");
             return (Criteria) this;
         }
 

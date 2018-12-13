@@ -1,6 +1,5 @@
 package com.llnqdx.mvnproj.utils;
 
-import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,10 +103,5 @@ public class RandomUtils {
             }
         }
         return dobRet;
-    }
-
-    public static void main(String[] args) {
-        double[] randomDArray = randomDArray(10, 20);
-        System.out.println(JSON.toJSONString(randomDArray));
     }
 }

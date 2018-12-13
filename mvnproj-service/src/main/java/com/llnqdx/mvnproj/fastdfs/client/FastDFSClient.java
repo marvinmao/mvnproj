@@ -3,7 +3,9 @@ package com.llnqdx.mvnproj.fastdfs.client;
 import com.alibaba.fastjson.JSON;
 import com.llnqdx.mvnproj.fastdfs.model.FastDFSFile;
 import com.llnqdx.mvnproj.fastdfs.model.FdfsFileInfo;
+import com.llnqdx.mvnproj.utils.MD5Utils;
 import com.llnqdx.mvnproj.utils.StringUtils;
+import org.apache.commons.io.FileUtils;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
 import org.slf4j.Logger;
@@ -11,9 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 
 /**
  * @Description:
@@ -70,23 +76,26 @@ public class FastDFSClient {
         byte[] file_buff = null;
         InputStream inputStream = multipartFile.getInputStream();
         if (inputStream != null) {
-            int len1 = inputStream.available();
-            file_buff = new byte[len1];
+            int len = inputStream.available();
+            file_buff = new byte[len];
             inputStream.read(file_buff);
         }
         inputStream.close();
         FdfsFileInfo fdfsFileTbl = new FdfsFileInfo();
-        FastDFSFile file = new FastDFSFile(fileName, file_buff, ext);
+        FastDFSFile fastDFSFile = new FastDFSFile(fileName, file_buff, ext);
         fdfsFileTbl.setFileName(fileName);
-        int fileLength = file.getContent().length;
+        int fileLength = fastDFSFile.getContent().length;
         fdfsFileTbl.setFileLength(fileLength);
-        logger.info("File Name [{}]  File Length [{}]", fileName, file.getContent().length);
+        supplementFileInfo(multipartFile, fdfsFileTbl);
+        logger.info("fastDFSFile Name [{}]  fastDFSFile Length [{}]", fileName, fastDFSFile.getContent().length);
         try {
             long startTime = System.currentTimeMillis();
-            fileAbsolutePath = FastDFSClient.upload(file);  //upload to fastdfs
+            fileAbsolutePath = FastDFSClient.upload(fastDFSFile);  //upload to fastdfs
             Long usedTime = System.currentTimeMillis() - startTime;
             fdfsFileTbl.setUsedTime(usedTime.intValue());
-            logger.info("upload_file usedTime [{}] ms", usedTime);
+            double avgUploadSpleed = BigDecimal.valueOf(fdfsFileTbl.getFileSize()).divide(BigDecimal.valueOf(fdfsFileTbl.getUsedTime()), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+            fdfsFileTbl.setAvgUploadSpleed(avgUploadSpleed);
+            logger.info("upload_file usedTime [{}] ms avgUploadSpleed [{}]", usedTime, avgUploadSpleed);
         } catch (Exception e) {
             logger.error("upload file Exception!", e);
         }
@@ -97,6 +106,27 @@ public class FastDFSClient {
         fdfsFileTbl.setFileUrl(path);
         logger.info("upload file fdfsFileTbl [{}]", JSON.toJSONString(fdfsFileTbl));
         return fdfsFileTbl;
+    }
+
+    private static void supplementFileInfo(MultipartFile multipartFile, FdfsFileInfo fdfsFileTbl) {
+        try {
+            logger.info("supplementFileInfo start");
+            String fileMd5 = MD5Utils.getMD5ByInputStream(multipartFile.getInputStream());
+            fdfsFileTbl.setFileMd5(fileMd5);
+            fdfsFileTbl.setFileSize(multipartFile.getInputStream().available());
+            String fileName = multipartFile.getOriginalFilename();
+            String prefix = fileName.substring(fileName.lastIndexOf("."));
+            File file = File.createTempFile(prefix, String.valueOf(System.currentTimeMillis())); // 创建临时文件
+            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
+            BufferedImage bufferedImage = ImageIO.read(file); // 通过临时文件获取图片流
+            if (bufferedImage != null) {
+                fdfsFileTbl.setImgWidth(bufferedImage.getWidth());
+                fdfsFileTbl.setImgHeight(bufferedImage.getHeight());
+                logger.info("supplementFileInfo image info imgWidth [{}] imgHeight [{}]", bufferedImage.getWidth(), bufferedImage.getHeight());
+            }
+        } catch (Exception e) {
+            logger.error("supplementFileInfo error ", e);
+        }
     }
 
     /**
@@ -130,12 +160,10 @@ public class FastDFSClient {
     }
 
     /**
-     * @Description:
-     * <p>
+     * @Description: <p>
      * group example：group1
      * storagePath example：M00/00/00/wKgRsVjtwpSAXGwkAAAweEAzRjw471.jpg
      * result code -1 0 2
-     *
      * @param: [groupName, remoteFileName]
      * @return: int
      */

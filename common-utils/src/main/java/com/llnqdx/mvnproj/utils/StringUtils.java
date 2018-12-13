@@ -3,9 +3,6 @@ package com.llnqdx.mvnproj.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Random;
-import java.util.UUID;
-
 /**
  * @author marvinmao
  * @Description:
@@ -67,8 +64,5 @@ public class StringUtils {
         }
         regex.append("$");
         return s.matches(regex.toString());
-    }
-
-    public static void main(String[] args) {
     }
 }
