@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.llnqdx.mvnproj.mapper.FdfsFileTblMapper">
   <resultMap id="BaseResultMap" type="com.llnqdx.mvnproj.model.FdfsFileTbl">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
     <result column="file_name" jdbcType="VARCHAR" property="fileName" />
     <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
     <result column="file_length" jdbcType="INTEGER" property="fileLength" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, file_name, file_url, file_length, used_time, create_time, update_time, delete_flag
+    uuid, file_name, file_url, file_length, used_time, create_time, update_time, delete_flag
   </sql>
   <select id="selectByExample" parameterType="com.llnqdx.mvnproj.model.FdfsFileTblCriteria" resultMap="BaseResultMap">
     select
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from fdfs_file_tbl
-    where id = #{id,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from fdfs_file_tbl
-    where id = #{id,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.llnqdx.mvnproj.model.FdfsFileTblCriteria">
     delete from fdfs_file_tbl
@@ -103,18 +103,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.llnqdx.mvnproj.model.FdfsFileTbl">
-    insert into fdfs_file_tbl (id, file_name, file_url, 
+    insert into fdfs_file_tbl (uuid, file_name, file_url, 
       file_length, used_time, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
+      update_time, delete_flag)
+    values (#{uuid,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
       #{fileLength,jdbcType=INTEGER}, #{usedTime,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.llnqdx.mvnproj.model.FdfsFileTbl">
     insert into fdfs_file_tbl
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="uuid != null">
+        uuid,
       </if>
       <if test="fileName != null">
         file_name,
@@ -139,8 +139,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
       </if>
       <if test="fileName != null">
         #{fileName,jdbcType=VARCHAR},
@@ -174,8 +174,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update fdfs_file_tbl
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.uuid != null">
+        uuid = #{record.uuid,jdbcType=VARCHAR},
       </if>
       <if test="record.fileName != null">
         file_name = #{record.fileName,jdbcType=VARCHAR},
@@ -205,7 +205,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update fdfs_file_tbl
-    set id = #{record.id,jdbcType=INTEGER},
+    set uuid = #{record.uuid,jdbcType=VARCHAR},
       file_name = #{record.fileName,jdbcType=VARCHAR},
       file_url = #{record.fileUrl,jdbcType=VARCHAR},
       file_length = #{record.fileLength,jdbcType=INTEGER},
@@ -242,7 +242,7 @@
         delete_flag = #{deleteFlag,jdbcType=SMALLINT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.llnqdx.mvnproj.model.FdfsFileTbl">
     update fdfs_file_tbl
@@ -253,6 +253,6 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       delete_flag = #{deleteFlag,jdbcType=SMALLINT}
-    where id = #{id,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -4,7 +4,7 @@
 package com.llnqdx.mvnproj.enums;
 
 /**
- * @Auther: maofujiang
+ * @Auther: marvinmao
  * @Date: 2018/12/8
  * @Description:
  */

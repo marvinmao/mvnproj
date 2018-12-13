@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * @Description:
  * @Auther: marvinmao
  * @Date: 2018/12/8
- * @Description:
  */
 @RestController
-public class UploadController {
+public class FastDFSController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -49,6 +49,20 @@ public class UploadController {
             return JSON.toJSONString(fastDFSService.deleteFile(filePath));
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/download_file") //new annotation since 4.3
+    public String singleFileDownload(@RequestParam("uuid") String uuid) {
+        if (StringUtils.isEmpty(uuid)) {
+            logger.error("singleFileObtain error param is empty");
+            return null;
+        }
+        try {
+            return JSON.toJSONString(fastDFSService.downloadFile(uuid));
+        } catch (Exception e) {
+            logger.error("singleFileObtain failed", e);
         }
         return null;
     }

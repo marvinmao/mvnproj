@@ -1,9 +1,9 @@
 package com.llnqdx.mvnproj.fastdfs.model;
 
 /**
+ * @Description:
  * @Auther: marvinmao
  * @Date: 2018/12/8
- * @Description:
  */
 public class FastDFSFile {
 
