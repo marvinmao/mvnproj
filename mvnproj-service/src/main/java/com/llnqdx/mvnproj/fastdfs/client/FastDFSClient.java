@@ -2,7 +2,7 @@ package com.llnqdx.mvnproj.fastdfs.client;
 
 import com.alibaba.fastjson.JSON;
 import com.llnqdx.mvnproj.fastdfs.model.FastDFSFile;
-import com.llnqdx.mvnproj.model.FdfsFileTbl;
+import com.llnqdx.mvnproj.fastdfs.model.FdfsFileInfo;
 import com.llnqdx.mvnproj.utils.StringUtils;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
@@ -14,12 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 
 /**
+ * @Description:
  * @Auther: marvinmao
  * @Date: 2018/12/8
- * @Description:
  */
 public class FastDFSClient {
     private static final Logger logger = LoggerFactory.getLogger(FastDFSClient.class);
@@ -31,31 +30,6 @@ public class FastDFSClient {
         } catch (Exception e) {
             logger.error("FastDFS Client Init Fail!", e);
         }
-    }
-
-    public static String[] upload(FastDFSFile file) {
-        NameValuePair[] meta_list = new NameValuePair[1];
-        meta_list[0] = new NameValuePair("author", file.getAuthor());
-
-        String[] uploadResults = null;
-        StorageClient storageClient = null;
-        try {
-            storageClient = getTrackerClient();
-            uploadResults = storageClient.upload_file(file.getContent(), file.getExt(), meta_list);
-        } catch (IOException e) {
-            logger.error("IO Exception when uploadind the file:" + file.getName(), e);
-        } catch (Exception e) {
-            logger.error("Non IO Exception when uploadind the file:" + file.getName(), e);
-        }
-
-        if (uploadResults == null && storageClient != null) {
-            logger.error("upload file fail, error code:" + storageClient.getErrorCode());
-        }
-        String groupName = uploadResults[0];
-        String remoteFileName = uploadResults[1];
-
-        logger.info("upload file successfully group_name [{}] remoteFileName [{}]", groupName, remoteFileName);
-        return uploadResults;
     }
 
     public static FileInfo getFile(String groupName, String remoteFileName) {
@@ -85,11 +59,11 @@ public class FastDFSClient {
     }
 
     /**
-     * @param multipartFile
-     * @return
-     * @throws IOException
+     * @Description:
+     * @param: [multipartFile]
+     * @return: com.llnqdx.mvnproj.model.FdfsFileTbl
      */
-    public static FdfsFileTbl saveFile(MultipartFile multipartFile) throws IOException {
+    public static FdfsFileInfo saveFile(MultipartFile multipartFile) throws IOException {
         String[] fileAbsolutePath = {};
         String fileName = multipartFile.getOriginalFilename();
         String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
@@ -101,7 +75,7 @@ public class FastDFSClient {
             inputStream.read(file_buff);
         }
         inputStream.close();
-        FdfsFileTbl fdfsFileTbl = new FdfsFileTbl(fileName, null, 0, 0, new Date(), new Date());
+        FdfsFileInfo fdfsFileTbl = new FdfsFileInfo();
         FastDFSFile file = new FastDFSFile(fileName, file_buff, ext);
         fdfsFileTbl.setFileName(fileName);
         int fileLength = file.getContent().length;
@@ -126,16 +100,44 @@ public class FastDFSClient {
     }
 
     /**
-     * 功能描述:删除文件
+     * @Description:
+     * @param: [file]
+     * @return: java.lang.String[]
+     */
+    public static String[] upload(FastDFSFile file) {
+        NameValuePair[] meta_list = new NameValuePair[1];
+        meta_list[0] = new NameValuePair("author", file.getAuthor());
+
+        String[] uploadResults = null;
+        StorageClient storageClient = null;
+        try {
+            storageClient = getTrackerClient();
+            uploadResults = storageClient.upload_file(file.getContent(), file.getExt(), meta_list);
+        } catch (IOException e) {
+            logger.error("IO Exception when uploadind the file:" + file.getName(), e);
+        } catch (Exception e) {
+            logger.error("Non IO Exception when uploadind the file:" + file.getName(), e);
+        }
+
+        if (uploadResults == null && storageClient != null) {
+            logger.error("upload file fail, error code:" + storageClient.getErrorCode());
+        }
+        String groupName = uploadResults[0];
+        String remoteFileName = uploadResults[1];
+
+        logger.info("upload file successfully group_name [{}] remoteFileName [{}]", groupName, remoteFileName);
+        return uploadResults;
+    }
+
+    /**
+     * @Description:
      * <p>
-     * group 组名 如：group1
-     * storagePath 不带组名的路径名称 如：M00/00/00/wKgRsVjtwpSAXGwkAAAweEAzRjw471.jpg
-     * -1失败,0成功 ,2找不到文件
+     * group example：group1
+     * storagePath example：M00/00/00/wKgRsVjtwpSAXGwkAAAweEAzRjw471.jpg
+     * result code -1 0 2
      *
      * @param: [groupName, remoteFileName]
      * @return: int
-     * @auther: marvinmao
-     * @date: 2018/12/8 16:27
      */
     public static int deleteFile(String groupName, String remoteFileName) throws Exception {
         logger.info("deleteFile start groupName [{}] remoteFileName [{}]", groupName, remoteFileName);

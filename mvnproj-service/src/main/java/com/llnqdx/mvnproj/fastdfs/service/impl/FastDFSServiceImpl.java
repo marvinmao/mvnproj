@@ -1,13 +1,16 @@
 package com.llnqdx.mvnproj.fastdfs.service.impl;
 
+import com.llnqdx.mvnproj.constant.Constant;
 import com.llnqdx.mvnproj.enums.DeleteFlagEnum;
 import com.llnqdx.mvnproj.fastdfs.client.FastDFSClient;
-import com.llnqdx.mvnproj.fastdfs.constant.Constant;
+import com.llnqdx.mvnproj.fastdfs.model.FdfsFileInfo;
 import com.llnqdx.mvnproj.fastdfs.service.FastDFSService;
 import com.llnqdx.mvnproj.mapper.FdfsFileTblMapper;
 import com.llnqdx.mvnproj.model.FdfsFileTbl;
 import com.llnqdx.mvnproj.model.FdfsFileTblCriteria;
+import com.llnqdx.mvnproj.utils.RandomUtils;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,12 +18,13 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-/**
+/*
+ * @Description:
  * @Auther: marvinmao
  * @Date: 2018/12/8
- * @Description:
  */
 @Service(value = "FastDFSService")
 public class FastDFSServiceImpl implements FastDFSService {
@@ -33,12 +37,20 @@ public class FastDFSServiceImpl implements FastDFSService {
     private FdfsFileTblMapper fdfsFileTblMapper;
 
     @Override
-    public FdfsFileTbl saveFile(MultipartFile file) {
+    public FdfsFileInfo saveFile(MultipartFile file) {
         try {
-            FdfsFileTbl fdfsFileTbl = FastDFSClient.saveFile(file);
+            FdfsFileInfo fdfsFileInfo = FastDFSClient.saveFile(file);
+            //need judge file upload success or faild
+            FdfsFileTbl fdfsFileTbl = new FdfsFileTbl();
+            BeanUtils.copyProperties(fdfsFileInfo, fdfsFileTbl);
+            fdfsFileTbl.setUuid(RandomUtils.createUUID());
+            fdfsFileTbl.setCreateTime(new Date());
+            fdfsFileTbl.setUpdateTime(new Date());
+            fdfsFileTbl.setDeleteFlag(DeleteFlagEnum.FALSE.getKey().shortValue());
             fdfsFileTblMapper.insert(fdfsFileTbl);
-            fdfsFileTbl.setFilePath(filePrifix + fdfsFileTbl.getFileUrl());
-            return fdfsFileTbl;
+            StringBuilder sb = new StringBuilder(fdfsFileInfo.getFileUrl());
+            fdfsFileInfo.setFileUrl(sb.insert(0, filePrifix).toString());
+            return fdfsFileInfo;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +72,7 @@ public class FastDFSServiceImpl implements FastDFSService {
             String deleteMsg = "";
             int deleteFile = FastDFSClient.deleteFile(groupName, remoteFileName);
             if (deleteFile == 0) {
-                logger.info("-----------文件删除成功，开始更新数据库-----------");
+                logger.info("----------- file delete success, start update db -----------");
                 FdfsFileTblCriteria criteria = new FdfsFileTblCriteria();
                 FdfsFileTblCriteria.Criteria updateCriteria = criteria.createCriteria();
                 updateCriteria.andFileUrlEqualTo(filePath);
@@ -69,16 +81,15 @@ public class FastDFSServiceImpl implements FastDFSService {
                 int updateByExampleSelective = fdfsFileTblMapper.updateByExampleSelective(fdfsFileTbl, criteria);
                 logger.info("updateByExampleSelective [{}]", updateByExampleSelective);
             }
-            //-1失败,0成功 ,2找不到文件
             switch (deleteFile) {
                 case Constant.DELETE_FAILD:
-                    deleteMsg = "删除失败";
+                    deleteMsg = Constant.DELETE_FAILD_MSG;
                     break;
                 case Constant.DELETE_SUCCESS:
-                    deleteMsg = "删除成功";
+                    deleteMsg = Constant.DELETE_SUCCESS_MSG;
                     break;
                 case Constant.DELETE_NOT_EXIST:
-                    deleteMsg = "找不到文件";
+                    deleteMsg = Constant.DELETE_NOT_EXIST_MSG;
                     break;
                 default:
                     break;
@@ -87,6 +98,19 @@ public class FastDFSServiceImpl implements FastDFSService {
             return deleteMsg;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String downloadFile(String uuid) {
+        FdfsFileTblCriteria criteria = new FdfsFileTblCriteria();
+        FdfsFileTblCriteria.Criteria queryCriteria = criteria.createCriteria();
+        queryCriteria.andUuidEqualTo(uuid);
+        List<FdfsFileTbl> list = fdfsFileTblMapper.selectByExample(criteria);
+        if (!CollectionUtils.isEmpty(list)) {
+            StringBuilder sb = new StringBuilder(list.get(0).getFileUrl());
+            return sb.insert(0, filePrifix).append("?attname=" + list.get(0).getFileName()).toString();
         }
         return null;
     }

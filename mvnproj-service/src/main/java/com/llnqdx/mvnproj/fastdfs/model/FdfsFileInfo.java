@@ -1,35 +1,34 @@
-package com.llnqdx.mvnproj.model;
-
-import com.llnqdx.mvnproj.base.BaseEntity;
+package com.llnqdx.mvnproj.fastdfs.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class FdfsFileTbl extends BaseEntity implements Serializable {
+/**
+ * @Description:
+ * @Auther: marvinmao
+ * @Date: 2018/12/8
+ */
+public class FdfsFileInfo implements Serializable {
+
     private String uuid;
 
     private String fileName;
 
     private String fileUrl;
 
+    private String downloadUrl;
+
     private Integer fileLength;
 
     private Integer usedTime;
 
-    private Date createTime;
-
-    private Date updateTime;
-
-    private Short deleteFlag;
-
-    private static final long serialVersionUID = 1L;
+    private String createTime;
 
     public String getUuid() {
         return uuid;
     }
 
     public void setUuid(String uuid) {
-        this.uuid = uuid == null ? null : uuid.trim();
+        this.uuid = uuid;
     }
 
     public String getFileName() {
@@ -37,7 +36,7 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
     }
 
     public void setFileName(String fileName) {
-        this.fileName = fileName == null ? null : fileName.trim();
+        this.fileName = fileName;
     }
 
     public String getFileUrl() {
@@ -45,7 +44,15 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
     }
 
     public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl == null ? null : fileUrl.trim();
+        this.fileUrl = fileUrl;
+    }
+
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
     }
 
     public Integer getFileLength() {
@@ -64,28 +71,18 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
         this.usedTime = usedTime;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Short getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Short deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
+//    public FdfsFileInfo(String fileName, String fileUrl, Integer fileLength, Integer usedTime) {
+//        this.fileName = fileName;
+//        this.fileUrl = fileUrl;
+//        this.fileLength = fileLength;
+//        this.usedTime = usedTime;
+//    }
 }
