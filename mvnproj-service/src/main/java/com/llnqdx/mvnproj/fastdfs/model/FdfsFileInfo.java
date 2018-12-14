@@ -19,13 +19,11 @@ public class FdfsFileInfo implements Serializable {
 
     private String fileMd5;
 
-    private Integer fileLength;
-
     private Integer fileSize;
 
     private Integer usedTime;
 
-    private Double avgUploadSpleed;
+    private Double avgUploadSpeed;
 
     private Integer imgWidth;
 
@@ -65,14 +63,6 @@ public class FdfsFileInfo implements Serializable {
         this.downloadUrl = downloadUrl;
     }
 
-    public Integer getFileLength() {
-        return fileLength;
-    }
-
-    public void setFileLength(Integer fileLength) {
-        this.fileLength = fileLength;
-    }
-
     public Integer getUsedTime() {
         return usedTime;
     }
@@ -97,12 +87,12 @@ public class FdfsFileInfo implements Serializable {
         this.fileSize = fileSize;
     }
 
-    public Double getAvgUploadSpleed() {
-        return avgUploadSpleed;
+    public Double getAvgUploadSpeed() {
+        return avgUploadSpeed;
     }
 
-    public void setAvgUploadSpleed(Double avgUploadSpleed) {
-        this.avgUploadSpleed = avgUploadSpleed;
+    public void setAvgUploadSpeed(Double avgUploadSpeed) {
+        this.avgUploadSpeed = avgUploadSpeed;
     }
 
     public String getFileMd5() {

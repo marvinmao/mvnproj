@@ -71,21 +71,19 @@ public class FastDFSClient {
      */
     public static FdfsFileInfo saveFile(MultipartFile multipartFile) throws IOException {
         String[] fileAbsolutePath = {};
-        String fileName = multipartFile.getOriginalFilename();
-        String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-        byte[] file_buff = null;
+        byte[] fileBuff = null;
         InputStream inputStream = multipartFile.getInputStream();
         if (inputStream != null) {
-            int len = inputStream.available();
-            file_buff = new byte[len];
-            inputStream.read(file_buff);
+            int length = inputStream.available();
+            fileBuff = new byte[length];
+            inputStream.read(fileBuff);
         }
         inputStream.close();
         FdfsFileInfo fdfsFileTbl = new FdfsFileInfo();
-        FastDFSFile fastDFSFile = new FastDFSFile(fileName, file_buff, ext);
+        String fileName = multipartFile.getOriginalFilename();
+        String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+        FastDFSFile fastDFSFile = new FastDFSFile(fileName, fileBuff, ext);
         fdfsFileTbl.setFileName(fileName);
-        int fileLength = fastDFSFile.getContent().length;
-        fdfsFileTbl.setFileLength(fileLength);
         supplementFileInfo(multipartFile, fdfsFileTbl);
         logger.info("fastDFSFile Name [{}]  fastDFSFile Length [{}]", fileName, fastDFSFile.getContent().length);
         try {
@@ -93,14 +91,15 @@ public class FastDFSClient {
             fileAbsolutePath = FastDFSClient.upload(fastDFSFile);  //upload to fastdfs
             Long usedTime = System.currentTimeMillis() - startTime;
             fdfsFileTbl.setUsedTime(usedTime.intValue());
-            double avgUploadSpleed = BigDecimal.valueOf(fdfsFileTbl.getFileSize()).divide(BigDecimal.valueOf(fdfsFileTbl.getUsedTime()), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
-            fdfsFileTbl.setAvgUploadSpleed(avgUploadSpleed);
-            logger.info("upload_file usedTime [{}] ms avgUploadSpleed [{}]", usedTime, avgUploadSpleed);
+            double avgUploadSpeed = BigDecimal.valueOf(fdfsFileTbl.getFileSize()).divide(BigDecimal.valueOf(fdfsFileTbl.getUsedTime()), 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+            fdfsFileTbl.setAvgUploadSpeed(avgUploadSpeed);
+            logger.info("upload_file usedTime [{}] ms avgUploadSpeed [{}]", usedTime, avgUploadSpeed);
         } catch (Exception e) {
             logger.error("upload file Exception!", e);
         }
         if (fileAbsolutePath == null) {
             logger.error("upload file failed,please upload again!");
+            return null;
         }
         String path = fileAbsolutePath[0] + "/" + fileAbsolutePath[1];
         fdfsFileTbl.setFileUrl(path);
@@ -116,9 +115,9 @@ public class FastDFSClient {
             fdfsFileTbl.setFileSize(multipartFile.getInputStream().available());
             String fileName = multipartFile.getOriginalFilename();
             String prefix = fileName.substring(fileName.lastIndexOf("."));
-            File file = File.createTempFile(prefix, String.valueOf(System.currentTimeMillis())); // 创建临时文件
+            File file = File.createTempFile(prefix, String.valueOf(System.currentTimeMillis())); //create temporary files
             FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
-            BufferedImage bufferedImage = ImageIO.read(file); // 通过临时文件获取图片流
+            BufferedImage bufferedImage = ImageIO.read(file); //gets a stream of images from a temporary file
             if (bufferedImage != null) {
                 fdfsFileTbl.setImgWidth(bufferedImage.getWidth());
                 fdfsFileTbl.setImgHeight(bufferedImage.getHeight());

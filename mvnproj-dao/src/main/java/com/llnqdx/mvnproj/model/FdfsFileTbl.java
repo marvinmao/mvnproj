@@ -10,15 +10,15 @@ public class FdfsFileTbl implements Serializable {
 
     private String fileUrl;
 
-    private String fileMd5;
+    private String downloadUrl;
 
-    private Integer fileLength;
+    private String fileMd5;
 
     private Integer fileSize;
 
     private Integer usedTime;
 
-    private Double avgUploadSpleed;
+    private Double avgUploadSpeed;
 
     private Integer imgWidth;
 
@@ -56,20 +56,20 @@ public class FdfsFileTbl implements Serializable {
         this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
 
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl == null ? null : downloadUrl.trim();
+    }
+
     public String getFileMd5() {
         return fileMd5;
     }
 
     public void setFileMd5(String fileMd5) {
         this.fileMd5 = fileMd5 == null ? null : fileMd5.trim();
-    }
-
-    public Integer getFileLength() {
-        return fileLength;
-    }
-
-    public void setFileLength(Integer fileLength) {
-        this.fileLength = fileLength;
     }
 
     public Integer getFileSize() {
@@ -88,12 +88,12 @@ public class FdfsFileTbl implements Serializable {
         this.usedTime = usedTime;
     }
 
-    public Double getAvgUploadSpleed() {
-        return avgUploadSpleed;
+    public Double getAvgUploadSpeed() {
+        return avgUploadSpeed;
     }
 
-    public void setAvgUploadSpleed(Double avgUploadSpleed) {
-        this.avgUploadSpleed = avgUploadSpleed;
+    public void setAvgUploadSpeed(Double avgUploadSpeed) {
+        this.avgUploadSpeed = avgUploadSpeed;
     }
 
     public Integer getImgWidth() {

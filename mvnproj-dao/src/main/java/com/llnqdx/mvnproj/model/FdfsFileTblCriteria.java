@@ -315,6 +315,76 @@ public class FdfsFileTblCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andDownloadUrlIsNull() {
+            addCriterion("download_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlIsNotNull() {
+            addCriterion("download_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlEqualTo(String value) {
+            addCriterion("download_url =", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlNotEqualTo(String value) {
+            addCriterion("download_url <>", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlGreaterThan(String value) {
+            addCriterion("download_url >", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("download_url >=", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlLessThan(String value) {
+            addCriterion("download_url <", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlLessThanOrEqualTo(String value) {
+            addCriterion("download_url <=", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlLike(String value) {
+            addCriterion("download_url like", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlNotLike(String value) {
+            addCriterion("download_url not like", value, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlIn(List<String> values) {
+            addCriterion("download_url in", values, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlNotIn(List<String> values) {
+            addCriterion("download_url not in", values, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlBetween(String value1, String value2) {
+            addCriterion("download_url between", value1, value2, "downloadUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownloadUrlNotBetween(String value1, String value2) {
+            addCriterion("download_url not between", value1, value2, "downloadUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andFileMd5IsNull() {
             addCriterion("file_md5 is null");
             return (Criteria) this;
@@ -382,66 +452,6 @@ public class FdfsFileTblCriteria {
 
         public Criteria andFileMd5NotBetween(String value1, String value2) {
             addCriterion("file_md5 not between", value1, value2, "fileMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthIsNull() {
-            addCriterion("file_length is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthIsNotNull() {
-            addCriterion("file_length is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthEqualTo(Integer value) {
-            addCriterion("file_length =", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthNotEqualTo(Integer value) {
-            addCriterion("file_length <>", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthGreaterThan(Integer value) {
-            addCriterion("file_length >", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthGreaterThanOrEqualTo(Integer value) {
-            addCriterion("file_length >=", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthLessThan(Integer value) {
-            addCriterion("file_length <", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthLessThanOrEqualTo(Integer value) {
-            addCriterion("file_length <=", value, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthIn(List<Integer> values) {
-            addCriterion("file_length in", values, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthNotIn(List<Integer> values) {
-            addCriterion("file_length not in", values, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthBetween(Integer value1, Integer value2) {
-            addCriterion("file_length between", value1, value2, "fileLength");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileLengthNotBetween(Integer value1, Integer value2) {
-            addCriterion("file_length not between", value1, value2, "fileLength");
             return (Criteria) this;
         }
 
@@ -565,63 +575,63 @@ public class FdfsFileTblCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedIsNull() {
-            addCriterion("avg_upload_spleed is null");
+        public Criteria andAvgUploadSpeedIsNull() {
+            addCriterion("avg_upload_speed is null");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedIsNotNull() {
-            addCriterion("avg_upload_spleed is not null");
+        public Criteria andAvgUploadSpeedIsNotNull() {
+            addCriterion("avg_upload_speed is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedEqualTo(Double value) {
-            addCriterion("avg_upload_spleed =", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedEqualTo(Double value) {
+            addCriterion("avg_upload_speed =", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedNotEqualTo(Double value) {
-            addCriterion("avg_upload_spleed <>", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedNotEqualTo(Double value) {
+            addCriterion("avg_upload_speed <>", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedGreaterThan(Double value) {
-            addCriterion("avg_upload_spleed >", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedGreaterThan(Double value) {
+            addCriterion("avg_upload_speed >", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedGreaterThanOrEqualTo(Double value) {
-            addCriterion("avg_upload_spleed >=", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedGreaterThanOrEqualTo(Double value) {
+            addCriterion("avg_upload_speed >=", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedLessThan(Double value) {
-            addCriterion("avg_upload_spleed <", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedLessThan(Double value) {
+            addCriterion("avg_upload_speed <", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedLessThanOrEqualTo(Double value) {
-            addCriterion("avg_upload_spleed <=", value, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedLessThanOrEqualTo(Double value) {
+            addCriterion("avg_upload_speed <=", value, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedIn(List<Double> values) {
-            addCriterion("avg_upload_spleed in", values, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedIn(List<Double> values) {
+            addCriterion("avg_upload_speed in", values, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedNotIn(List<Double> values) {
-            addCriterion("avg_upload_spleed not in", values, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedNotIn(List<Double> values) {
+            addCriterion("avg_upload_speed not in", values, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedBetween(Double value1, Double value2) {
-            addCriterion("avg_upload_spleed between", value1, value2, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedBetween(Double value1, Double value2) {
+            addCriterion("avg_upload_speed between", value1, value2, "avgUploadSpeed");
             return (Criteria) this;
         }
 
-        public Criteria andAvgUploadSpleedNotBetween(Double value1, Double value2) {
-            addCriterion("avg_upload_spleed not between", value1, value2, "avgUploadSpleed");
+        public Criteria andAvgUploadSpeedNotBetween(Double value1, Double value2) {
+            addCriterion("avg_upload_speed not between", value1, value2, "avgUploadSpeed");
             return (Criteria) this;
         }
 

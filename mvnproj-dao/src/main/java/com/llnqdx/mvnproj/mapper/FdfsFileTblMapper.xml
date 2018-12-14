@@ -5,11 +5,11 @@
     <id column="uuid" jdbcType="VARCHAR" property="uuid" />
     <result column="file_name" jdbcType="VARCHAR" property="fileName" />
     <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
     <result column="file_md5" jdbcType="VARCHAR" property="fileMd5" />
-    <result column="file_length" jdbcType="INTEGER" property="fileLength" />
     <result column="file_size" jdbcType="INTEGER" property="fileSize" />
     <result column="used_time" jdbcType="INTEGER" property="usedTime" />
-    <result column="avg_upload_spleed" jdbcType="DOUBLE" property="avgUploadSpleed" />
+    <result column="avg_upload_speed" jdbcType="DOUBLE" property="avgUploadSpeed" />
     <result column="img_width" jdbcType="INTEGER" property="imgWidth" />
     <result column="img_height" jdbcType="INTEGER" property="imgHeight" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uuid, file_name, file_url, file_md5, file_length, file_size, used_time, avg_upload_spleed, 
+    uuid, file_name, file_url, download_url, file_md5, file_size, used_time, avg_upload_speed, 
     img_width, img_height, create_time, update_time, delete_flag
   </sql>
   <select id="selectByExample" parameterType="com.llnqdx.mvnproj.model.FdfsFileTblCriteria" resultMap="BaseResultMap">
@@ -110,13 +110,13 @@
   </delete>
   <insert id="insert" parameterType="com.llnqdx.mvnproj.model.FdfsFileTbl">
     insert into fdfs_file_tbl (uuid, file_name, file_url, 
-      file_md5, file_length, file_size, 
-      used_time, avg_upload_spleed, img_width, 
+      download_url, file_md5, file_size, 
+      used_time, avg_upload_speed, img_width, 
       img_height, create_time, update_time, 
       delete_flag)
     values (#{uuid,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
-      #{fileMd5,jdbcType=VARCHAR}, #{fileLength,jdbcType=INTEGER}, #{fileSize,jdbcType=INTEGER}, 
-      #{usedTime,jdbcType=INTEGER}, #{avgUploadSpleed,jdbcType=DOUBLE}, #{imgWidth,jdbcType=INTEGER}, 
+      #{downloadUrl,jdbcType=VARCHAR}, #{fileMd5,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, 
+      #{usedTime,jdbcType=INTEGER}, #{avgUploadSpeed,jdbcType=DOUBLE}, #{imgWidth,jdbcType=INTEGER}, 
       #{imgHeight,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{deleteFlag,jdbcType=SMALLINT})
   </insert>
@@ -132,11 +132,11 @@
       <if test="fileUrl != null">
         file_url,
       </if>
+      <if test="downloadUrl != null">
+        download_url,
+      </if>
       <if test="fileMd5 != null">
         file_md5,
-      </if>
-      <if test="fileLength != null">
-        file_length,
       </if>
       <if test="fileSize != null">
         file_size,
@@ -144,8 +144,8 @@
       <if test="usedTime != null">
         used_time,
       </if>
-      <if test="avgUploadSpleed != null">
-        avg_upload_spleed,
+      <if test="avgUploadSpeed != null">
+        avg_upload_speed,
       </if>
       <if test="imgWidth != null">
         img_width,
@@ -173,11 +173,11 @@
       <if test="fileUrl != null">
         #{fileUrl,jdbcType=VARCHAR},
       </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
       <if test="fileMd5 != null">
         #{fileMd5,jdbcType=VARCHAR},
-      </if>
-      <if test="fileLength != null">
-        #{fileLength,jdbcType=INTEGER},
       </if>
       <if test="fileSize != null">
         #{fileSize,jdbcType=INTEGER},
@@ -185,8 +185,8 @@
       <if test="usedTime != null">
         #{usedTime,jdbcType=INTEGER},
       </if>
-      <if test="avgUploadSpleed != null">
-        #{avgUploadSpleed,jdbcType=DOUBLE},
+      <if test="avgUploadSpeed != null">
+        #{avgUploadSpeed,jdbcType=DOUBLE},
       </if>
       <if test="imgWidth != null">
         #{imgWidth,jdbcType=INTEGER},
@@ -223,11 +223,11 @@
       <if test="record.fileUrl != null">
         file_url = #{record.fileUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.downloadUrl != null">
+        download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      </if>
       <if test="record.fileMd5 != null">
         file_md5 = #{record.fileMd5,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fileLength != null">
-        file_length = #{record.fileLength,jdbcType=INTEGER},
       </if>
       <if test="record.fileSize != null">
         file_size = #{record.fileSize,jdbcType=INTEGER},
@@ -235,8 +235,8 @@
       <if test="record.usedTime != null">
         used_time = #{record.usedTime,jdbcType=INTEGER},
       </if>
-      <if test="record.avgUploadSpleed != null">
-        avg_upload_spleed = #{record.avgUploadSpleed,jdbcType=DOUBLE},
+      <if test="record.avgUploadSpeed != null">
+        avg_upload_speed = #{record.avgUploadSpeed,jdbcType=DOUBLE},
       </if>
       <if test="record.imgWidth != null">
         img_width = #{record.imgWidth,jdbcType=INTEGER},
@@ -263,11 +263,11 @@
     set uuid = #{record.uuid,jdbcType=VARCHAR},
       file_name = #{record.fileName,jdbcType=VARCHAR},
       file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      download_url = #{record.downloadUrl,jdbcType=VARCHAR},
       file_md5 = #{record.fileMd5,jdbcType=VARCHAR},
-      file_length = #{record.fileLength,jdbcType=INTEGER},
       file_size = #{record.fileSize,jdbcType=INTEGER},
       used_time = #{record.usedTime,jdbcType=INTEGER},
-      avg_upload_spleed = #{record.avgUploadSpleed,jdbcType=DOUBLE},
+      avg_upload_speed = #{record.avgUploadSpeed,jdbcType=DOUBLE},
       img_width = #{record.imgWidth,jdbcType=INTEGER},
       img_height = #{record.imgHeight,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -286,11 +286,11 @@
       <if test="fileUrl != null">
         file_url = #{fileUrl,jdbcType=VARCHAR},
       </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
       <if test="fileMd5 != null">
         file_md5 = #{fileMd5,jdbcType=VARCHAR},
-      </if>
-      <if test="fileLength != null">
-        file_length = #{fileLength,jdbcType=INTEGER},
       </if>
       <if test="fileSize != null">
         file_size = #{fileSize,jdbcType=INTEGER},
@@ -298,8 +298,8 @@
       <if test="usedTime != null">
         used_time = #{usedTime,jdbcType=INTEGER},
       </if>
-      <if test="avgUploadSpleed != null">
-        avg_upload_spleed = #{avgUploadSpleed,jdbcType=DOUBLE},
+      <if test="avgUploadSpeed != null">
+        avg_upload_speed = #{avgUploadSpeed,jdbcType=DOUBLE},
       </if>
       <if test="imgWidth != null">
         img_width = #{imgWidth,jdbcType=INTEGER},
@@ -323,11 +323,11 @@
     update fdfs_file_tbl
     set file_name = #{fileName,jdbcType=VARCHAR},
       file_url = #{fileUrl,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
       file_md5 = #{fileMd5,jdbcType=VARCHAR},
-      file_length = #{fileLength,jdbcType=INTEGER},
       file_size = #{fileSize,jdbcType=INTEGER},
       used_time = #{usedTime,jdbcType=INTEGER},
-      avg_upload_spleed = #{avgUploadSpleed,jdbcType=DOUBLE},
+      avg_upload_speed = #{avgUploadSpeed,jdbcType=DOUBLE},
       img_width = #{imgWidth,jdbcType=INTEGER},
       img_height = #{imgHeight,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

@@ -1,8 +1,8 @@
 package com.llnqdx.mvnproj.fastdfs.service.impl;
 
+import com.llnqdx.mvnproj.constant.Constant;
 import com.llnqdx.mvnproj.enums.DeleteFlagEnum;
 import com.llnqdx.mvnproj.fastdfs.client.FastDFSClient;
-import com.llnqdx.mvnproj.constant.Constant;
 import com.llnqdx.mvnproj.fastdfs.model.FdfsFileInfo;
 import com.llnqdx.mvnproj.fastdfs.service.FastDFSService;
 import com.llnqdx.mvnproj.mapper.FdfsFileTblMapper;
@@ -40,6 +40,11 @@ public class FastDFSServiceImpl implements FastDFSService {
     public FdfsFileInfo saveFile(MultipartFile file) {
         try {
             FdfsFileInfo fdfsFileInfo = FastDFSClient.saveFile(file);
+            if (fdfsFileInfo == null) {
+                throw new Exception("FastDFSClient saveFile error result is null");
+            }
+            StringBuilder sb = new StringBuilder(fdfsFileInfo.getFileUrl());
+            fdfsFileInfo.setDownloadUrl(sb.insert(0, filePrifix).append("?attname=" + fdfsFileInfo.getFileName()).toString());
             //need judge file upload success or faild
             FdfsFileTbl fdfsFileTbl = new FdfsFileTbl();
             BeanUtils.copyProperties(fdfsFileInfo, fdfsFileTbl);
@@ -48,8 +53,6 @@ public class FastDFSServiceImpl implements FastDFSService {
             fdfsFileTbl.setUpdateTime(new Date());
             fdfsFileTbl.setDeleteFlag(DeleteFlagEnum.FALSE.getKey().shortValue());
             fdfsFileTblMapper.insert(fdfsFileTbl);
-            StringBuilder sb = new StringBuilder(fdfsFileInfo.getFileUrl());
-            fdfsFileInfo.setFileUrl(sb.insert(0, filePrifix).toString());
             return fdfsFileInfo;
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +82,7 @@ public class FastDFSServiceImpl implements FastDFSService {
                 FdfsFileTbl fdfsFileTbl = new FdfsFileTbl();
                 fdfsFileTbl.setDeleteFlag(DeleteFlagEnum.TRUE.getKey().shortValue());
                 int updateByExampleSelective = fdfsFileTblMapper.updateByExampleSelective(fdfsFileTbl, criteria);
-                logger.info("updateByExampleSelective [{}]", updateByExampleSelective);
+                logger.info("fdfsFileTblMapper updateByExampleSelective [{}]", updateByExampleSelective);
             }
             switch (deleteFile) {
                 case Constant.DELETE_FAILD:
