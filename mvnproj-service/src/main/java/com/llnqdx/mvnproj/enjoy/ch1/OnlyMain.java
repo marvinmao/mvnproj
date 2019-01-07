@@ -1,4 +1,4 @@
-package com.llnqdx.mvnproj.enjoy.ch1.wn;
+package com.llnqdx.mvnproj.enjoy.ch1;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
@@ -15,6 +15,7 @@ public class OnlyMain {
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(false, false);
         for (ThreadInfo threadInfo : threadInfos) {
+            //这里均为守护线程，守护线程和主线程共死，finally不能保证一定执行
             System.out.println("[" + threadInfo.getThreadId() + "] " + threadInfo.getThreadName());
         }
     }
