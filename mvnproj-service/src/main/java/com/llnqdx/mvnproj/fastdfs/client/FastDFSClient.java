@@ -130,12 +130,10 @@ public class FastDFSClient {
     }
 
     /**
-     * @Description:
-     * <p>
+     * @Description: <p>
      * group example：group1
      * storagePath example：M00/00/00/wKgRsVjtwpSAXGwkAAAweEAzRjw471.jpg
      * result code -1 0 2
-     *
      * @param: [groupName, remoteFileName]
      * @return: int
      */
