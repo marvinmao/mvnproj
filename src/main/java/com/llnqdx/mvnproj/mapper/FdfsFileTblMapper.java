@@ -2,8 +2,9 @@ package com.llnqdx.mvnproj.mapper;
 
 import com.llnqdx.mvnproj.model.FdfsFileTbl;
 import com.llnqdx.mvnproj.model.FdfsFileTblCriteria;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface FdfsFileTblMapper {
     long countByExample(FdfsFileTblCriteria example);

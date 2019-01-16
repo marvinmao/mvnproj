@@ -2,8 +2,9 @@ package com.llnqdx.mvnproj.mapper;
 
 import com.llnqdx.mvnproj.model.UserInfo;
 import com.llnqdx.mvnproj.model.UserInfoCriteria;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserInfoMapper {
     long countByExample(UserInfoCriteria example);
