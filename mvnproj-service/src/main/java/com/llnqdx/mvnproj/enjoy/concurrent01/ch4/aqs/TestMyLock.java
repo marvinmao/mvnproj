@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：
+ * @Date: 2019/1/13
+ * @Description:
  */
 public class TestMyLock {
     public void test() {

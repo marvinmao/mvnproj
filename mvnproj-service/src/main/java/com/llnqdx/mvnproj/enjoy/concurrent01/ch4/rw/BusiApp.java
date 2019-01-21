@@ -6,8 +6,8 @@ import java.util.Random;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：对商品进行业务的应用
+ * @Date: 2019/1/13
+ * @Description:对商品进行业务的应用
  */
 public class BusiApp {
     static final int readWriteRatio = 10;//读写线程的比例

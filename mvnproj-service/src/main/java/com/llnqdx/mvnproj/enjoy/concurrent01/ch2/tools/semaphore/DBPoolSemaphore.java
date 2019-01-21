@@ -6,7 +6,7 @@ import java.util.concurrent.Semaphore;
 
 /**
  * @author marvinmao
- * <p>
+ * @Date: 2019/1/13
  * @Description:演示Semaphore用法，一个数据库连接池的实现
  */
 public class DBPoolSemaphore {

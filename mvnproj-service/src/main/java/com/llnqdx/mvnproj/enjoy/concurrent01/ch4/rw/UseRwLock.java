@@ -8,8 +8,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：
+ * @Date: 2019/1/13
+ * @Description:
  */
 public class UseRwLock implements GoodsService {
 

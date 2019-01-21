@@ -7,8 +7,8 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：实现一个自己的类ReentrantLock
+ * @Date: 2019/1/13
+ * @Description:实现一个自己的类ReentrantLock
  */
 public class SelfLock implements Lock {
 

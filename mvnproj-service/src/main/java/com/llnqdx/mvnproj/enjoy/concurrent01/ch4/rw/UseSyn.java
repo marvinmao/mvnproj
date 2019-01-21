@@ -4,8 +4,8 @@ import com.llnqdx.mvnproj.enjoy.concurrent01.tools.SleepTools;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：用内置锁来实现商品服务接口
+ * @Date: 2019/1/13
+ * @Description:用内置锁来实现商品服务接口
  */
 public class UseSyn implements GoodsService {
 

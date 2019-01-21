@@ -4,8 +4,8 @@ import java.util.concurrent.DelayQueue;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：取出到期订单的功能
+ * @Date: 2019/1/13
+ * @Description:取出到期订单的功能
  */
 public class FetchOrder implements Runnable {
 

@@ -55,7 +55,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 // * interoperable with <tt>Hashtable</tt> in programs that rely on its
 // * thread safety but not on its synchronization details.
 // *
-// * <p> Retrieval operations (including <tt>get</tt>) generally do not
+//* @Date: 2019/1/13 Retrieval operations (including <tt>get</tt>) generally do not
 // * block, so may overlap with update operations (including
 // * <tt>put</tt> and <tt>remove</tt>). Retrievals reflect the results
 // * of the most recently <em>completed</em> update operations holding
@@ -67,7 +67,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 // * They do <em>not</em> throw {@link ConcurrentModificationException}.
 // * However, iterators are designed to be used by only one thread at a time.
 // *
-// * <p> The allowed concurrency among update operations is guided by
+//* @Date: 2019/1/13 The allowed concurrency among update operations is guided by
 // * the optional <tt>concurrencyLevel</tt> constructor argument
 // * (default <tt>16</tt>), which is used as a hint for internal sizing.  The
 // * table is internally partitioned to try to permit the indicated
@@ -85,14 +85,14 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 // * a good idea to provide estimates of expected table sizes in
 // * constructors.
 // *
-// * <p>This class and its views and iterators implement all of the
+//* @Date: 2019/1/13This class and its views and iterators implement all of the
 // * <em>optional</em> methods of the {@link Map} and {@link Iterator}
 // * interfaces.
 // *
-// * <p> Like {@link Hashtable} but unlike {@link HashMap}, this class
+//* @Date: 2019/1/13 Like {@link Hashtable} but unlike {@link HashMap}, this class
 // * does <em>not</em> allow <tt>null</tt> to be used as a key or value.
 // *
-// * <p>This class is a member of the
+//* @Date: 2019/1/13This class is a member of the
 // * <a href="{@docRoot}/../technotes/guides/collections/index.html">
 // * Java Collections Framework</a>.
 // *
@@ -187,7 +187,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //        /**
 //        * Enable alternative hashing of String keys?
 //        *
-//        * <p>Unlike the other hash map implementations we do not implement a
+//       * @Date: 2019/1/13Unlike the other hash map implementations we do not implement a
 //        * threshold for regulating whether alternative hashing is used for
 //        * String keys. Alternative hashing is either enabled for all instances
 //        * or disabled for all instances.
@@ -976,7 +976,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //     * Returns the value to which the specified key is mapped,
 //     * or {@code null} if this map contains no mapping for the key.
 //     *
-//     * <p>More formally, if this map contains a mapping from a key
+//    * @Date: 2019/1/13More formally, if this map contains a mapping from a key
 //     * {@code k} to a value {@code v} such that {@code key.equals(k)},
 //     * then this method returns {@code v}; otherwise it returns
 //     * {@code null}.  (There can be at most one such mapping.)
@@ -1109,7 +1109,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //     * Maps the specified key to the specified value in this table.
 //     * Neither the key nor the value can be null.
 //     *
-//     * <p> The value can be retrieved by calling the <tt>get</tt> method
+//    * @Date: 2019/1/13 The value can be retrieved by calling the <tt>get</tt> method
 //     * with a key that is equal to the original key.
 //     *
 //     * @param key key with which the specified value is to be associated
@@ -1240,7 +1240,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //     * operations.  It does not support the <tt>add</tt> or
 //     * <tt>addAll</tt> operations.
 //     *
-//     * <p>The view's <tt>iterator</tt> is a "weakly consistent" iterator
+//    * @Date: 2019/1/13The view's <tt>iterator</tt> is a "weakly consistent" iterator
 //     * that will never throw {@link ConcurrentModificationException},
 //     * and guarantees to traverse elements as they existed upon
 //     * construction of the iterator, and may (but is not guaranteed to)
@@ -1261,7 +1261,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //     * <tt>retainAll</tt>, and <tt>clear</tt> operations.  It does not
 //     * support the <tt>add</tt> or <tt>addAll</tt> operations.
 //     *
-//     * <p>The view's <tt>iterator</tt> is a "weakly consistent" iterator
+//    * @Date: 2019/1/13The view's <tt>iterator</tt> is a "weakly consistent" iterator
 //     * that will never throw {@link ConcurrentModificationException},
 //     * and guarantees to traverse elements as they existed upon
 //     * construction of the iterator, and may (but is not guaranteed to)
@@ -1282,7 +1282,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;///*
 //     * operations.  It does not support the <tt>add</tt> or
 //     * <tt>addAll</tt> operations.
 //     *
-//     * <p>The view's <tt>iterator</tt> is a "weakly consistent" iterator
+//    * @Date: 2019/1/13The view's <tt>iterator</tt> is a "weakly consistent" iterator
 //     * that will never throw {@link ConcurrentModificationException},
 //     * and guarantees to traverse elements as they existed upon
 //     * construction of the iterator, and may (but is not guaranteed to)

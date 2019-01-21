@@ -2,8 +2,8 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch4.condition;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：测试Lock和Condition实现等待通知
+ * @Date: 2019/1/13
+ * @Description:测试Lock和Condition实现等待通知
  */
 public class TestCond {
     private static ExpressCond express = new ExpressCond(0, ExpressCond.CITY);

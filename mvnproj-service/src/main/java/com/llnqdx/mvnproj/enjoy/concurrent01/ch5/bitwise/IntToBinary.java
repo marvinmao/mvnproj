@@ -4,8 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：演示位运算
+ * @Date: 2019/1/13
+ * @Description:演示位运算
  */
 public class IntToBinary {
 

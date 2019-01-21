@@ -1,9 +1,11 @@
 package com.llnqdx.mvnproj.enjoy.concurrent01.ch5.bitwise;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：
+ * @Date: 2019/1/13
+ * @Description:
  */
 public class Permission {
 
@@ -56,6 +58,10 @@ public class Permission {
         System.out.println("insert = " + permission.isAllow(ALLOW_INSERT));
         System.out.println("delete = " + permission.isAllow(ALLOW_DELETE));
 
+        ConcurrentHashMap<String, Object> concurrentHashMap = new ConcurrentHashMap<>();
 
+        //机器的Cpu核心
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        System.out.println(availableProcessors);
     }
 }

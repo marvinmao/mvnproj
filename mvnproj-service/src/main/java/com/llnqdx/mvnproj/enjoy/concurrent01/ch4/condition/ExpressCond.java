@@ -6,8 +6,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：
+ * @Date: 2019/1/13
+ * @Description:
  */
 public class ExpressCond {
     public final static String CITY = "ShangHai";

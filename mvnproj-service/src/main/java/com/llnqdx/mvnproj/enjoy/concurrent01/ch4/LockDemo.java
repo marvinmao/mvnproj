@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Administrator
- * <p>
+ * @Date: 2019/1/13
  * 使用显示锁的范式
  */
 public class LockDemo {

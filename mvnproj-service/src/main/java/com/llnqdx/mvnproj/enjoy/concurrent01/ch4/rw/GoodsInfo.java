@@ -2,8 +2,8 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch4.rw;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：商品的实体类
+ * @Date: 2019/1/13
+ * @Description:商品的实体类
  */
 public class GoodsInfo {
     private final String name;

@@ -4,8 +4,8 @@ import java.util.concurrent.DelayQueue;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：测试延时订单
+ * @Date: 2019/1/13
+ * @Description:测试延时订单
  */
 public class Test {
     public static void main(String[] args) throws InterruptedException {

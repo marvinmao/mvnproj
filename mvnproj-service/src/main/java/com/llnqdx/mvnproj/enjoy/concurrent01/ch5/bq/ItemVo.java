@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：存放到队列的元素
+ * @Date: 2019/1/13
+ * @Description:存放到队列的元素
  */
 public class ItemVo<T> implements Delayed {
 

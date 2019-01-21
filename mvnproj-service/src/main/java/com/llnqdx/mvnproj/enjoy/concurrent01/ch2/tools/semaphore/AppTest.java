@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  * @author marvinmao
- * <p>
+ * @Date: 2019/1/13
  * @Description:测试数据库连接池
  */
 public class AppTest {

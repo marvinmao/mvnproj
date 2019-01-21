@@ -2,8 +2,8 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5.bq;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：订单的实体类
+ * @Date: 2019/1/13
+ * @Description:订单的实体类
  */
 public class Order {
     private final String orderNo;//订单的编号

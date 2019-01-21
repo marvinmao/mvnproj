@@ -2,8 +2,8 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch5;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：
+ * @Date: 2019/1/13
+ * @Description:
  */
 public class TestMap {
     public static void main(String[] args) {

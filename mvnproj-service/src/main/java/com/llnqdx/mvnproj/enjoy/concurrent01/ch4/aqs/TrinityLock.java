@@ -6,8 +6,8 @@ import java.util.concurrent.locks.Condition;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：奇葩点的三元共享同步工具类
+ * @Date: 2019/1/13
+ * @Description:奇葩点的三元共享同步工具类
  */
 public class TrinityLock {
 

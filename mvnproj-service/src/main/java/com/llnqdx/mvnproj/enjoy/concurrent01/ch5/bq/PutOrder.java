@@ -4,8 +4,8 @@ import java.util.concurrent.DelayQueue;
 
 /**
  * @Auther: marvinmao
- * <p>
- * 类说明：将订单放入队列
+ * @Date: 2019/1/13
+ * @Description:将订单放入队列
  */
 public class PutOrder implements Runnable {
 
