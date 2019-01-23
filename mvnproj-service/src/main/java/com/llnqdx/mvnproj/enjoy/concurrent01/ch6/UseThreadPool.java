@@ -1,6 +1,7 @@
 package com.llnqdx.mvnproj.enjoy.concurrent01.ch6;
 
-import com.xiangxue.tools.SleepTools;
+
+import com.llnqdx.mvnproj.enjoy.concurrent01.tools.SleepTools;
 
 import java.util.Random;
 import java.util.concurrent.*;

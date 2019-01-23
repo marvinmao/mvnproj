@@ -1,6 +1,7 @@
 package com.llnqdx.mvnproj.enjoy.concurrent01.ch6.schd;
 
-import com.xiangxue.tools.SleepTools;
+
+import com.llnqdx.mvnproj.enjoy.concurrent01.tools.SleepTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

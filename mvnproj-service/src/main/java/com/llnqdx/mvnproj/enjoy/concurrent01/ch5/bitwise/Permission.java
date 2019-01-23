@@ -63,5 +63,7 @@ public class Permission {
         //机器的Cpu核心
         int availableProcessors = Runtime.getRuntime().availableProcessors();
         System.out.println(availableProcessors);
+
+        System.out.println(1 << 30);
     }
 }
