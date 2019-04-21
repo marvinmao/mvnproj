@@ -1,6 +1,4 @@
-/**
- * Copyright 2017-2025 Evergrande Group.
- */
+
 package com.llnqdx.mvnproj.enums;
 
 /**
