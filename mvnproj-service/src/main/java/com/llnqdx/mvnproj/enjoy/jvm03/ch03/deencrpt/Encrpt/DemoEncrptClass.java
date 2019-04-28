@@ -1,8 +1,8 @@
 package com.llnqdx.mvnproj.enjoy.jvm03.ch03.deencrpt.Encrpt;
 
 
-import com.xiangxue.ch03.deencrpt.service.DemoXorEncrpt;
-import com.xiangxue.ch03.deencrpt.service.IDemoEncryptUtil;
+import com.llnqdx.mvnproj.enjoy.jvm03.ch03.deencrpt.service.DemoXorEncrpt;
+import com.llnqdx.mvnproj.enjoy.jvm03.ch03.deencrpt.service.IDemoEncryptUtil;
 
 import java.io.File;
 
