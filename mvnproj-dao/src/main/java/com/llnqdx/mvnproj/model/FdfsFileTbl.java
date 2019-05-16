@@ -1,20 +1,28 @@
 package com.llnqdx.mvnproj.model;
 
-import com.llnqdx.mvnproj.base.BaseEntity;
-
 import java.io.Serializable;
 import java.util.Date;
 
-public class FdfsFileTbl extends BaseEntity implements Serializable {
+public class FdfsFileTbl implements Serializable {
     private String uuid;
 
     private String fileName;
 
     private String fileUrl;
 
-    private Integer fileLength;
+    private String downloadUrl;
+
+    private String fileMd5;
+
+    private Integer fileSize;
 
     private Integer usedTime;
+
+    private Double avgUploadSpeed;
+
+    private Integer imgWidth;
+
+    private Integer imgHeight;
 
     private Date createTime;
 
@@ -48,12 +56,28 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
         this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
 
-    public Integer getFileLength() {
-        return fileLength;
+    public String getDownloadUrl() {
+        return downloadUrl;
     }
 
-    public void setFileLength(Integer fileLength) {
-        this.fileLength = fileLength;
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl == null ? null : downloadUrl.trim();
+    }
+
+    public String getFileMd5() {
+        return fileMd5;
+    }
+
+    public void setFileMd5(String fileMd5) {
+        this.fileMd5 = fileMd5 == null ? null : fileMd5.trim();
+    }
+
+    public Integer getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Integer fileSize) {
+        this.fileSize = fileSize;
     }
 
     public Integer getUsedTime() {
@@ -62,6 +86,30 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
 
     public void setUsedTime(Integer usedTime) {
         this.usedTime = usedTime;
+    }
+
+    public Double getAvgUploadSpeed() {
+        return avgUploadSpeed;
+    }
+
+    public void setAvgUploadSpeed(Double avgUploadSpeed) {
+        this.avgUploadSpeed = avgUploadSpeed;
+    }
+
+    public Integer getImgWidth() {
+        return imgWidth;
+    }
+
+    public void setImgWidth(Integer imgWidth) {
+        this.imgWidth = imgWidth;
+    }
+
+    public Integer getImgHeight() {
+        return imgHeight;
+    }
+
+    public void setImgHeight(Integer imgHeight) {
+        this.imgHeight = imgHeight;
     }
 
     public Date getCreateTime() {
@@ -87,5 +135,4 @@ public class FdfsFileTbl extends BaseEntity implements Serializable {
     public void setDeleteFlag(Short deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
-
 }
