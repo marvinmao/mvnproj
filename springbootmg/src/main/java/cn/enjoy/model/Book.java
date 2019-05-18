@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 import java.util.Date;
 
 /**
- * Created by VULCAN on 2019/1/25.
+ * Created on 2019/1/25.
  */
 public class Book {
 
@@ -81,11 +81,11 @@ public class Book {
         this.updateTime = updateTime;
     }
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", price=" + price + ", name=" + name
-				+ ", info=" + info + ", publish=" + publish + ", createTime="
-				+ createTime + ", updateTime=" + updateTime + "]";
-	}
-    
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", price=" + price + ", name=" + name
+                + ", info=" + info + ", publish=" + publish + ", createTime="
+                + createTime + ", updateTime=" + updateTime + "]";
+    }
+
 }

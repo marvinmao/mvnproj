@@ -3,8 +3,7 @@ package com.llnqdx.mvnproj.enjoy.jvm03.ch03.deencrpt.service;
 import java.io.*;
 
 /**
- * @author-maovinmao
- * 创建日期：2017/08/31
+ * @author-maovinmao 创建日期：2017/08/31
  * 创建时间: 11:20
  */
 public class DemoXorEncrpt implements IDemoEncryptUtil {

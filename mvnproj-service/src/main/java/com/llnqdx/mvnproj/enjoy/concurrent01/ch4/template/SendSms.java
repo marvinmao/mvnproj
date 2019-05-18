@@ -1,7 +1,7 @@
 package com.llnqdx.mvnproj.enjoy.concurrent01.ch4.template;
 
 /**
- * @author Mark
+ *  @author marvin
  * 模板方法的派生类
  */
 public class SendSms extends SendCustom {

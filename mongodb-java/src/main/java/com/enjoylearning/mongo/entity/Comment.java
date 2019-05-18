@@ -1,50 +1,48 @@
 package com.enjoylearning.mongo.entity;
 
-import java.util.Date;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="comments")
+import java.util.Date;
+
+@Document(collection = "comments")
 public class Comment {
-	
-	private String author;
-	
-	private String content;
-	
-	private Date commentTime;
-	
-	
 
-	public String getAuthor() {
-		return author;
-	}
+    private String author;
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    private String content;
 
-	public Date getCommentTime() {
-		return commentTime;
-	}
+    private Date commentTime;
 
-	public void setCommentTime(Date commentTime) {
-		this.commentTime = commentTime;
-	}
 
-	public String getContent() {
-		return content;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	@Override
-	public String toString() {
-		return "Comment [author=" + author + ", commentTime=" + commentTime
-				+ ", content=" + content + "]";
-	}
-	
-	
-	
+    public Date getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(Date commentTime) {
+        this.commentTime = commentTime;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment [author=" + author + ", commentTime=" + commentTime
+                + ", content=" + content + "]";
+    }
+
+
 }

@@ -3,7 +3,7 @@ package com.llnqdx.mvnproj.enjoy.concurrent01.ch4.template;
 import java.util.Date;
 
 /**
- * @author mark
+ *  @author marvin
  * 模板方法的父类
  */
 public abstract class SendCustom {

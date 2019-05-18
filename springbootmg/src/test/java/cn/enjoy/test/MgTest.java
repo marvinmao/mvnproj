@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by VULCAN on 2019/1/25.
+ * Created on 2019/1/25.
  */
 
 @SpringBootTest(classes = {App.class})
@@ -32,7 +32,7 @@ public class MgTest {
         book.setInfo("info");
         book.setPrice(12);
         book.setPublish("publish");
-         mongoDbService.saveObj(book);
+        mongoDbService.saveObj(book);
     }
 
     @Test

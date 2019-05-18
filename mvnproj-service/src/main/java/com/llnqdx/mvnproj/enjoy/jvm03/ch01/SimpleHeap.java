@@ -1,7 +1,7 @@
 package com.llnqdx.mvnproj.enjoy.jvm03.ch01;
 
 /**
- * @author maovinmao   享学课堂 https://enjoy.ke.qq.com
+ * @author maovinmao
  * <p>
  * 类说明：
  */
