@@ -11,13 +11,13 @@ import java.util.Properties;
 import java.util.concurrent.Future;
 
 /**
- * @author marvin
- * <p>
+ * @author Marvin
+ *
  * 类说明：可以和KafkaFutureProducer比较分区结果
  */
 public class SysPartitionProducer {
 
-    private static KafkaProducer<String, String> producer = null;
+    private static KafkaProducer<String,String> producer = null;
 
     public static void main(String[] args) {
         /*消息生产者*/
@@ -27,15 +27,15 @@ public class SysPartitionProducer {
         producer = new KafkaProducer<String, String>(properties);
         try {
             /*待发送的消息实例*/
-            ProducerRecord<String, String> record;
+            ProducerRecord<String,String> record;
             try {
-                record = new ProducerRecord<String, String>(
-                        BusiConst.SELF_PARTITION_TOPIC, "teacher01",
+                record = new ProducerRecord<String,String>(
+                        BusiConst.SELF_PARTITION_TOPIC,"teacher01",
                         "mark");
                 Future<RecordMetadata> future = producer.send(record);
                 System.out.println("Do other something");
                 RecordMetadata recordMetadata = future.get();
-                if (null != recordMetadata) {
+                if(null!=recordMetadata){
                     System.out.println(String.format("偏移量：%s,分区：%s",
                             recordMetadata.offset(),
                             recordMetadata.partition()));
@@ -47,6 +47,8 @@ public class SysPartitionProducer {
             producer.close();
         }
     }
+
+
 
 
 }

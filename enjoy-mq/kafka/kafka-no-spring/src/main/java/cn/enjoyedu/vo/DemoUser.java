@@ -1,8 +1,8 @@
 package cn.enjoyedu.vo;
 
 /**
- * @author marvin
- * <p>
+ * @author Marvin
+ *
  * 类说明：实体类
  */
 public class DemoUser {

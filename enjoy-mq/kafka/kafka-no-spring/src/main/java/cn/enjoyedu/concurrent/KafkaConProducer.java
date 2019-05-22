@@ -14,8 +14,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author marvin
- * <p>
+ * @author Marvin
+ *
  * 类说明：多线程下使用生产者
  */
 public class KafkaConProducer {
@@ -29,18 +29,18 @@ public class KafkaConProducer {
     private static CountDownLatch countDownLatch
             = new CountDownLatch(MSG_SIZE);
 
-    private static DemoUser makeUser(int id) {
+    private static DemoUser makeUser(int id){
         DemoUser demoUser = new DemoUser(id);
-        String userName = "xiangxue_" + id;
+        String userName = "xiangxue_"+id;
         demoUser.setName(userName);
         return demoUser;
     }
 
     /*发送消息的任务*/
-    private static class ProduceWorker implements Runnable {
+    private static class ProduceWorker implements Runnable{
 
-        private ProducerRecord<String, String> record;
-        private KafkaProducer<String, String> producer;
+        private ProducerRecord<String,String> record;
+        private KafkaProducer<String,String> producer;
 
         public ProduceWorker(ProducerRecord<String, String> record,
                              KafkaProducer<String, String> producer) {
@@ -50,22 +50,22 @@ public class KafkaConProducer {
 
         public void run() {
             final String id = Thread.currentThread().getId()
-                    + "-" + System.identityHashCode(producer);
+                    +"-"+System.identityHashCode(producer);
             try {
                 producer.send(record, new Callback() {
                     public void onCompletion(RecordMetadata metadata,
                                              Exception exception) {
-                        if (null != exception) {
+                        if(null!=exception){
                             exception.printStackTrace();
                         }
-                        if (null != metadata) {
-                            System.out.println(id + "|"
-                                    + String.format("偏移量：%s,分区：%s",
-                                    metadata.offset(), metadata.partition()));
+                        if(null!=metadata){
+                            System.out.println(id+"|"
+                                    +String.format("偏移量：%s,分区：%s",
+                                    metadata.offset(),metadata.partition()));
                         }
                     }
                 });
-                System.out.println(id + ":数据[" + record + "]已发送。");
+                System.out.println(id+":数据["+record+"]已发送。");
                 countDownLatch.countDown();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -74,19 +74,19 @@ public class KafkaConProducer {
     }
 
     public static void main(String[] args) {
-        KafkaProducer<String, String> producer
+        KafkaProducer<String,String> producer
                 = new KafkaProducer<String, String>(
                 KafkaConst.producerConfig(StringSerializer.class,
                         StringSerializer.class));
         try {
-            for (int i = 0; i < MSG_SIZE; i++) {
+            for(int i=0;i<MSG_SIZE;i++){
                 DemoUser demoUser = makeUser(i);
-                ProducerRecord<String, String> record
-                        = new ProducerRecord<String, String>(
-                        BusiConst.CONCURRENT_USER_INFO_TOPIC, null,
+                ProducerRecord<String,String> record
+                        = new ProducerRecord<String,String>(
+                        BusiConst.CONCURRENT_USER_INFO_TOPIC,null,
                         System.currentTimeMillis(),
-                        demoUser.getId() + "", demoUser.toString());
-                executorService.submit(new ProduceWorker(record, producer));
+                        demoUser.getId()+"", demoUser.toString());
+                executorService.submit(new ProduceWorker(record,producer));
             }
             countDownLatch.await();
         } catch (Exception e) {
@@ -96,6 +96,8 @@ public class KafkaConProducer {
             executorService.shutdown();
         }
     }
+
+
 
 
 }

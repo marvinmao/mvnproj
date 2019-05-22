@@ -6,8 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author marvin
- * <p>
+ * @author Marvin
+ *
  * 类说明：设置了再均衡监听器的消费者
  */
 public class RebalanceConsumer {
@@ -20,7 +20,7 @@ public class RebalanceConsumer {
 
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < BusiConst.CONCURRENT_PARTITIONS_COUNT; i++) {
+        for(int i = 0; i<BusiConst.CONCURRENT_PARTITIONS_COUNT; i++){
             executorService.submit(new ConsumerWorker(false));
         }
         Thread.sleep(5000);
