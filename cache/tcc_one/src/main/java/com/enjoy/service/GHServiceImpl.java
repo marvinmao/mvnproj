@@ -1,6 +1,6 @@
 package com.enjoy.service;
 
-import org.mengyun.tcctransaction.api.Compensable;
+//import org.mengyun.tcctransaction.api.Compensable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class GHServiceImpl implements GHService{
     @Autowired
     private NHService nhService;
 
-    @Compensable(confirmMethod = "confirmOrder", cancelMethod = "cancelOrder")
+//    @Compensable(confirmMethod = "confirmOrder", cancelMethod = "cancelOrder")
     @Transactional
     public int doOrder(String busId,String idcard) {//try方法
 

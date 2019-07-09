@@ -1,7 +1,7 @@
 package com.enjoy.service;
 
-import org.mengyun.tcctransaction.api.Compensable;
-import org.mengyun.tcctransaction.dubbo.context.DubboTransactionContextEditor;
+//import org.mengyun.tcctransaction.api.Compensable;
+//import org.mengyun.tcctransaction.dubbo.context.DubboTransactionContextEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ public class NHServiceImpl implements NHService{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Compensable(confirmMethod = "confirmOrder", cancelMethod = "cancelOrder",
-            transactionContextEditor = DubboTransactionContextEditor.class)
+//    @Compensable(confirmMethod = "confirmOrder", cancelMethod = "cancelOrder",
+//            transactionContextEditor = DubboTransactionContextEditor.class)
     @Transactional
     public int doOrder(String busId,String idcard) {
         System.out.println("frozen order："+busId);

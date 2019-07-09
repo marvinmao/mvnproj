@@ -1,8 +1,8 @@
 package com.enjoy.service;
 
-import org.mengyun.tcctransaction.api.Compensable;
+//import org.mengyun.tcctransaction.api.Compensable;
 
 public interface GHService {
-    @Compensable
+//    @Compensable
     public int doOrder(String orderid,String idcard);
 }
