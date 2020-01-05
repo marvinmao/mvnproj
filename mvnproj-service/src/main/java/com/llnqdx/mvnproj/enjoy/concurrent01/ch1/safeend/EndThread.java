@@ -14,7 +14,7 @@ public class EndThread {
         @Override
         public void run() {
             String threadName = Thread.currentThread().getName();
-            //while (true) 不会中断线程，体现出协作式
+//            while (true) {//不会中断线程，体现出协作式
             while (!isInterrupted()) {
                 System.out.println(threadName + " is run");
             }

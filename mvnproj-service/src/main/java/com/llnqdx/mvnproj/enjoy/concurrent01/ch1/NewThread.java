@@ -33,6 +33,7 @@ public class NewThread {
         @Override
         public String call() throws Exception {
             System.out.println("i am implements Callable");
+            boolean isinter=true;
             return "Callable";
         }
     }

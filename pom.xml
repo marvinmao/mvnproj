@@ -73,6 +73,12 @@
             <version>3.4.6</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
         <!--springboot中修改完文件后自动reload的插件 end-->
     </dependencies>
 
