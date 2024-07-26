@@ -1,6 +1,6 @@
 package com.llnqdx.mvnproj.leetcode;
 
-public class 合并两个有序链表 {
+public class 合并两个有序链表21 {
 
     ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // 虚拟头结点
@@ -33,7 +33,7 @@ public class 合并两个有序链表 {
     }
 
     public static void main(String[] args) {
-        合并两个有序链表 merge = new 合并两个有序链表();
+        合并两个有序链表21 merge = new 合并两个有序链表21();
 
         ListNode l1 = new ListNode(1);
         l1.next = new ListNode(2);
