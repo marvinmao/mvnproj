@@ -233,4 +233,16 @@ public class MyLinkedList<E> {
         System.out.println("null");
         System.out.println();
     }
+
+    public static void main(String[] args) {
+        // 长度为 5 的数组
+        int[] arr = new int[]{1, 2, 3, 4, 5};
+        int i = 0;
+
+        // 模拟环形数组，这个循环永远不会结束
+        while (i < arr.length) {
+            System.out.println(arr[i]);
+            i = (i + 1) % arr.length;
+        }
+    }
 }

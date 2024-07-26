@@ -1,4 +1,4 @@
-package com.llnqdx.mvnproj.utils;
+package com.llnqdx.mvnproj.leetcode;
 
 class ListNode {
     int val;
