@@ -1,7 +1,14 @@
 package com.llnqdx.mvnproj.leetcode.双指针技巧链表题目;
 
-import java.util.List;
-
+/**
+ * @Description: 形象地理解，这个算法的逻辑类似于拉拉链，l1, l2 类似于拉链两侧的锯齿，指针 p 就好像拉链的拉索，将两个有序链表合并；
+ * 或者说这个过程像蛋白酶合成蛋白质，l1, l2 就好比两条氨基酸，而指针 p 就好像蛋白酶，将氨基酸组合成蛋白质。
+ * <p>
+ * 代码中还用到一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。你可以试试，如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。
+ * 而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。
+ * @Author: maofujiang
+ * @DateTime: 14:41 2024/7/27
+ */
 public class 分隔链表86 {
 
     ListNode partition(ListNode head, int x) {
