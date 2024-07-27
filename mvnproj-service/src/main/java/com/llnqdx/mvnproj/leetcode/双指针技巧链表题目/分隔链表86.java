@@ -1,5 +1,7 @@
 package com.llnqdx.mvnproj.leetcode.双指针技巧链表题目;
 
+import java.util.List;
+
 public class 分隔链表86 {
 
     ListNode partition(ListNode head, int x) {
