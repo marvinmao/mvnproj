@@ -4,12 +4,10 @@ package com.llnqdx.mvnproj.leetcode.双指针技巧数组题目;
  * @Description: 找回文串的难点在于，回文串的的长度可能是奇数也可能是偶数，解决该问题的核心是从中心向两端扩散的双指针技巧。
  * <p>
  * 如果回文串的长度为奇数，则它有一个中心字符；如果回文串的长度为偶数，则可以认为它有两个中心字符。所以我们可以先实现这样一个函数：palindrome(String s, int l, int r)
- *
+ * <p>
  * 这样，如果输入相同的 l 和 r，就相当于寻找长度为奇数的回文串，如果输入相邻的 l 和 r，则相当于寻找长度为偶数的回文串。
- *
+ * <p>
  * 那么回到最长回文串的问题，解法的大致思路就是：
- *
- *
  * @Author: maofujiang
  * @DateTime: 16:39 2024/7/27
  */
@@ -40,5 +38,12 @@ public class 最长回文子串5 {
         }
         // 返回以 s[l] 和 s[r] 为中心的最长回文串
         return s.substring(l + 1, r);
+    }
+
+    public static void main(String[] args) {
+        String s = "babad";
+        最长回文子串5 clazz = new 最长回文子串5();
+        String result = clazz.longestPalindrome(s);
+        System.out.println(result);
     }
 }
